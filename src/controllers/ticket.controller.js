@@ -18,7 +18,7 @@ export const getTicketById = async (req, res) => {
         if(!ticket){
             return res.sendNotFound("No seencontro ticket con el id");
         }
-        res.sendSuccess(student);
+        res.sendSuccess(ticket);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

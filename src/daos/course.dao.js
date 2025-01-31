@@ -4,11 +4,11 @@ import mongoose from "mongoose";
 
 export default class CourseDAO {
     static async getAllCourses() {
-        return await CourseModel.find();
+        return await CourseModel.find().populate("teachers");
     }
 
     static async getCourseById(id) {
-        return await CourseModel.findById(id);
+        return await CourseModel.findById(id).populate("teachers");
     }
 
     static async createCourse(data) {

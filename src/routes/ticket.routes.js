@@ -13,7 +13,7 @@ router.get('/', authorization(["admin"]),getTicket);
 // Ruta para obtener un ticket por su id
 router.get('/:id', authorization(["admin", "student"]),getTicketById);
 
-// Ruta para crear un ticket
+// Ruta para crear un ticket | recibe el id del estudiante que va a realizar la compra y por body un arreglo con los id de los cursos a comprar
 router.post('/:id/crear', authorization(["student"]), createTicket);
 
 // Ruta para actualizar el estado del ticket | recibe solo el id del ticket al que se le quiere cambiar el estado a confirmado 

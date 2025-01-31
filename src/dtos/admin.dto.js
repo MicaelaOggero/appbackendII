@@ -5,5 +5,6 @@ export default class AdminDTO {
         this.lastName = admin.lastName;
         this.email = admin.email;
         this.role = admin.role;
+        this.idGithub= admin.idGithub
     }
 }

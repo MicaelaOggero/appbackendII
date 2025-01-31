@@ -23,10 +23,8 @@ export default class TicketService {
         
         const totalPrice = selectedCourses.reduce((sum, course) => sum + course.price, 0);
 
-        
         const newTicket = await TicketDAO.create(new TicketDTO({ student, courses, totalPrice }));
-        console.log(courses)
-        console.log(newTicket)
+    
         return newTicket;
     }
 
@@ -36,7 +34,7 @@ export default class TicketService {
 
         if (status === "confirmed") {
             
-            for (const courseId of ticket.course) {
+            for (const courseId of ticket.courses) {
                 await CourseDAO.decrementCapacity(courseId);
             }
         }
