@@ -16,7 +16,7 @@ router.get('/:id', authorization(["admin", "student", "teacher"]),getCourseById)
 // Ruta para crear un curso
 router.post('/', authorization(["admin"]),createCourse);
 
-// Ruta para agregar un profesor a un curso
-router.post('/:id/teacher', authorization(["admin"]), addTeacher);
+// Ruta para agregar un profesor a un curso | recibe id del curso por parámetro y id del profesor por body
+router.post('/:id/addteacher', authorization(["admin"]), addTeacher);
 
 export default router;

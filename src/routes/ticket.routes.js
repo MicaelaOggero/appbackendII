@@ -16,7 +16,7 @@ router.get('/:id', authorization(["admin", "student"]),getTicketById);
 // Ruta para crear un ticket
 router.post('/:id/crear', authorization(["student"]), createTicket);
 
-// Ruta para actualizar el estado del ticket
+// Ruta para actualizar el estado del ticket | recibe solo el id del ticket al que se le quiere cambiar el estado a confirmado 
 router.post('/:id', authorization(["admin"]), statusTicket);
 
 export default router;
