@@ -26,3 +26,30 @@ export const getAdminById = async (req, res) => {
         
     }
 }; 
+
+export const updateAdmin = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const updatedData = req.body;
+
+        const updatedAdmin = await AdminService.updateAdmin(id, updatedData);
+
+        if(!updatedAdmin){
+            return res.sendNotFound("No se editaron los datos del administrador");
+        }
+        res.sendSuccess(updateAdmin);
+    } catch (error) {
+        res.sendServerError(error.message);
+    }
+};
+
+
+export const deleteAdmin = async (req, res) => {
+    try {
+        const { id } = req.params;
+        await AdminService.deleteAdmin(id);
+        res.sendSuccess("Admin deleted successfully");
+    } catch (error) {
+        res.sendServerError(error.message);
+    }
+}

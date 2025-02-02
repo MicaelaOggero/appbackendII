@@ -19,7 +19,17 @@ export default class AdminDAO {
         return await AdminModel.create(data);
     }
 
+    
     static async getByEmail(email) {
         return await AdminModel.findOne({ email });
     }
+
+    static async updateAdmin(id, updatedData) {
+        return await AdminModel.findByIdAndUpdate(id, updatedData, { new: true });
+    }
+
+    static async deleteAdmin(id) {
+        return await AdminModel.findByIdAndDelete(id);
+    }
+    
 }
