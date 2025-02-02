@@ -5,6 +5,7 @@ import AdminDAO from "../daos/admin.dao.js";
 import StudentDAO from "../daos/student.dao.js";
 import TeacherDAO from "../daos/teacher.dao.js";
 import mongoose from "mongoose";
+import { createHash } from "../utils/hashingUtils.js";
 
 export default class AdminService {
 
@@ -55,13 +56,15 @@ export default class AdminService {
             throw new Error("Admin not found");
         }
 
+        updatedData.password = createHash(updatedData.password)
+
         // Verificar si el rol ha cambiado
         if (updatedData.role && updatedData.role !== admin.role) {
             const newRole = updatedData.role;
 
             // Eliminar el administrador de la colección actual
             await AdminDAO.deleteAdmin(id);
-
+            
             // Crear el usuario en la colección correspondiente
             if (newRole === "student") {
                 const newStudent = await StudentDAO.createStudent(updatedData);

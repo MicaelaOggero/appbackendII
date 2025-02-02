@@ -1,4 +1,5 @@
 import AdminModel from "../models/admin.model.js";
+import AdminDTO from "../dtos/admin.dto.js";
 
 export default class AdminDAO {
 
@@ -16,7 +17,8 @@ export default class AdminDAO {
     }
 
     static async createAdmin(data) {
-        return await AdminModel.create(data);
+        const admin = await AdminModel.create(data);
+        return new AdminDTO(admin)
     }
 
     

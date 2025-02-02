@@ -6,6 +6,6 @@ export default class StudentDTO {
         this.email = student.email;
         this.role = student.role;
         this.tickets = student.tickets || [];
-        this.idGitHub= student.idGitHub
+        this.idGitHub= student.idGitHub;
     }
 }
